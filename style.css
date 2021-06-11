@@ -1,0 +1,45 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    background-color: rgb(127, 127, 230);
+}
+
+.titulo {
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    color: antiquewhite;
+}
+
+.container {
+    margin: 20px 400px;
+    padding: 20px;
+    display: block;
+    justify-content: center;
+    background-color: cornsilk;
+    border-radius: 10px;
+}
+
+#rodape {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1rem;
+    color: #ffff;
+    text-align: center;
+}
+
+input {
+    margin-bottom: 10px;
+}
+
+select {
+    width: 150px;
+    text-align: left;
+    margin-bottom: 10px;
+}

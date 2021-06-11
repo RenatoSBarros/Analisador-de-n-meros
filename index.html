@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="PT-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Analizador dd Números</title>
+</head>
+<body>
+
+    <header class="titulo">
+        <h1>Analizador de números</h1>
+    </header>
+    <section class="container">
+        <div>
+            Número (entre 1 a 100)
+            <input type="number" name="fnum" id="fnum">
+            <input type="button" value="Adicionar" id="btn">
+            <br><br><select name="flista" id="flista" size="6"></select><br>
+            <input type="button" value="Finalizar" class="finalizar" onclick="finalizar()">
+        </div>
+        <div id="res"></div>
+    </section>
+    <footer id="rodape">
+        Desenvolvido por Renato Barros
+        <p>Inspirado no modelo de Gustavo Guanabara</p>
+    </footer>
+
+    <script type="text/javascript">
+    
+        let num = document.querySelector('#fnum')
+        let lista = document.querySelector('#flista')
+        let res = document.querySelector('#res')
+        let valores = [] 
+
+
+        function isnumber(n) {
+            if(Number(n) >= 1 && Number(n) <= 100){
+                return true
+            } else {
+                return false	
+            }
+        }
+
+        function inlist(n, i) {
+            if(i.indexOf(Number(n)) != -1) {
+                return true
+            } else {
+                return false
+            }
+        } 
+
+    
+        const btn = document.querySelector('#btn');
+        btn.addEventListener('click' , function adicionar() {
+            if(isnumber(num.value) && !inlist(num.value , valores)) {
+                valores.push(Number(num.value))
+                let item = document.createElement('option')
+                item.text = `valor ${num.value} adicionado.`
+                lista.appendChild(item)
+                res.innerHTML = ''
+            } else {
+                window.alert("Valor inválido ou já se encontra na lista !");
+            } 
+            num.value =""
+            num.focus()
+        });
+
+        function finalizar(){
+            if(valores.length == 0){
+                alert("Adicione valores na lista")
+            }else{
+                let total = valores.length
+                let maior = valores[0]
+                let menor = valores[0]
+                let soma = 0
+                let media = 0
+                for(let pos in valores){
+                    soma += valores[pos]
+                    media = soma/total
+                    if(valores[pos] > maior)
+                        maior = valores[pos]
+                   if(valores[pos] < menor)
+                        menor = valores[pos]
+                }    
+                res.innerHTML = ''
+                res.innerHTML += `<p>Ao total temos ${total} números.</p>`
+                res.innerHTML += `<p>O maior valor informado foi ${maior}.</p>`
+                res.innerHTML += `<p>O menor valor informado foi ${menor}.</p>`
+                res.innerHTML += `<p>A soma de todos os números é ${soma}.</p>`
+                res.innerHTML += `<p>A média de todos os números é ${media}.</p>`
+            }
+        }
+    
+    </script>
+    
+</body>
+</html>
